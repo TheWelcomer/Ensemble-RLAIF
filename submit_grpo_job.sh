@@ -254,7 +254,7 @@ echo "==============================================="
 
 # Run the training script
 echo "Starting GRPO training..."
-python buck_commander.py \
+python trainer.py \
 #    --base-dir ./grpo_training_4B \
 #    --model-name unsloth/Qwen3-4B \
 #    --dataset-name The-Welcomer/scribing-train-dataset-batched \
