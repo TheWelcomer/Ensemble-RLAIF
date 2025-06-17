@@ -50,17 +50,21 @@ This combination allows for effective fine-tuning on complex, unlabeled datasets
 
 ```
 .
-├── environment.yml              # Conda environment with all dependencies
+├── environment.yml             # Conda environment with all dependencies
 ├── submit_grpo_job.sh          # SLURM script for submitting training jobs on an HPC cluster
 ├── trainer.py                  # The main E-RLAIF training script using GRPO
-├── paper/                      # Directory containing the research paper (LaTeX source)
+├── paper/                      # Directory containing the research paper LaTeX and .pdf
+├── demo.ipynb/                 # Demo notebook which generates a note from the base and from the Clinician Note models for side-by-side comparison
 ├── grpo_training/              # (Generated) Output directory for models, checkpoints, and LoRA adapters
 ├── logs/                       # (Generated) Directory for SLURM output and error logs
-├── env.example/                       # .env template to create a .env from 
+├── env.example/                # .env template to create a .env from 
 └── README.md                   # This file
 ```
 
-## Getting Started
+## Run Demo
+We recommend you run the demo.ipynb locally or on Google Colab by uploading it and pressing Run All. You can change the note style and transcript used, or add your own! The demo takes approximately 24 GB of vram to run, so unless you have 32 GB of vram or unified RAM on your computer, we recommend running it on Google Colab using a GPU with 24 GB or more of vram.
+
+## Run Training
 
 ### Prerequisites
 
