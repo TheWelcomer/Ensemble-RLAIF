@@ -2,7 +2,7 @@ from huggingface_hub import login
 import os
 login(token=os.getenv('HF_API_KEY'))
 os.environ["WANDB_API_KEY"] = os.getenv('WANDB_API_KEY')
-os.environ["WANDB_PROJECT"] = "AI-Scribing"
+os.environ["WANDB_PROJECT"] = "AI-Scribing-E-RLAIF"
 os.environ["WANDB_LOG_MODEL"] = "checkpoint"
 system_prompt = """
 # AI Clinical Note Generator
@@ -795,10 +795,10 @@ project_name = os.getenv("WANDB_PROJECT", "AI-Scribing")
 
 wandb.init(
     project=project_name,
-    name="buck-commander-8b-unbiased",
-    id="lfmf8mqr",
-    reinit="finish_previous",
-    resume="must",
+    name="E-RLAIF-Training-Run",
+    # id="resumed-run-id",
+    # reinit="finish_previous",
+    # resume="must",
     config={
         "ema_alpha_initial": EMA_ALPHA_INITIAL,
         "ema_initial_phase_steps": EMA_INITIAL_PHASE_STEPS,
@@ -869,8 +869,8 @@ training_args = GRPOConfig(
     max_steps = 10,
     save_steps = 4,
     report_to = "wandb",
-    run_name = "buck-commander-8b-unbiased",
-    output_dir = "./buck-commander-8b-unbiased",
+    run_name = "E-RLAIF-Training-Run",
+    output_dir = "./output",
 )
 trainer = GRPOTrainer(
     model = model,
@@ -881,6 +881,6 @@ trainer = GRPOTrainer(
     args = training_args,
     train_dataset = dataset,
 )
-trainer.train(resume_from_checkpoint="./buck-commander-8b-unbiased/checkpoint-72")
-model.save_lora("lora_final_unbiased")
-model.push_to_hub_merged("The-Welcomer/cluster-test-unbiased", tokenizer, save_method = "merged_16bit")
+trainer.train()
+model.save_lora("lora_weights")
+model.push_to_hub_merged("hf-username/repo-id", tokenizer, save_method = "merged_16bit")

@@ -255,14 +255,6 @@ echo "==============================================="
 # Run the training script
 echo "Starting GRPO training..."
 python trainer.py \
-#    --base-dir ./grpo_training_4B \
-#    --model-name unsloth/Qwen3-4B \
-#    --dataset-name The-Welcomer/scribing-train-dataset-batched \
-#    --max-seq-length 8000 \
-#    --lora-rank 128 \
-#    --max-steps 100 \
-#    --wandb-project AI-Scribing \
-#    --wandb-run-name "grpo-slurm-${SLURM_JOB_ID}"
 
 # Capture exit code
 exit_code=$?
