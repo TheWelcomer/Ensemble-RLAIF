@@ -1,0 +1,72 @@
+name: grpo-training
+
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Core Python and CUDA
+  - python=3.11
+  - pip
+
+  # PyTorch ecosystem (CUDA-enabled)
+  - pytorch::pytorch
+  - pytorch::torchvision
+  - pytorch::torchaudio
+  - pytorch::pytorch-cuda=12.1
+
+  # Scientific computing base
+  - numpy=2.0.2
+  - packaging=24.2
+  - typing-extensions=4.14.0
+  - requests=2.32.3
+  - certifi=2025.4.26
+
+  # Pip dependencies - Core only
+  - pip:
+    # === CORE TRAINING FRAMEWORK ===
+    - unsloth==2025.6.2
+    - trl==0.15.2
+    - transformers==4.51.3
+    - accelerate==1.7.0
+    - peft==0.15.2
+    - bitsandbytes==0.46.0
+
+    # === MODEL & TOKENIZATION ===
+    - huggingface-hub==0.32.4
+    - tokenizers==0.21.1
+    - safetensors==0.5.3
+    - datasets==3.6.0
+    - sentencepiece==0.2.0
+
+    # === INFERENCE ENGINE ===
+    - vllm==0.8.5.post1
+    
+    # === EVALUATION APIS ===
+    - openai  # Latest compatible version
+
+    # === EXPERIMENT TRACKING ===
+    - wandb==0.19.10
+
+    # === UTILITIES (let pip resolve versions) ===
+    - einops
+    - tqdm
+    - rich
+    - filelock
+    - fsspec
+    - tenacity
+    - pyarrow
+    - msgpack
+    - orjson
+
+    # === ASYNC & NETWORKING ===
+    - aiohttp
+    - aiofiles
+    - httpx
+    - anyio
+
+    # === JUPYTER SUPPORT (optional) ===
+    - ipython
+    - jupyter
